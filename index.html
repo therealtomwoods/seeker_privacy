@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Seeker App</title>
+    <style>
+        :root {
+            --bg-color: #0A0A12;
+            --surface-color: #1A1A24;
+            --text-primary: #E0E0E0;
+            --text-secondary: #A0A0B0;
+            --accent-cyan: #18FFFF;
+            --accent-green: #69F0AE;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(24, 255, 255, 0.2);
+        }
+
+        h1 {
+            color: var(--accent-cyan);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            color: var(--accent-green);
+            margin-top: 40px;
+            font-size: 1.5rem;
+            border-left: 4px solid var(--accent-green);
+            padding-left: 10px;
+        }
+
+        h3 {
+            color: var(--text-primary);
+            margin-top: 25px;
+        }
+
+        p, li {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        ul {
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background-color: var(--surface-color);
+            border: 1px solid rgba(105, 240, 174, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .last-updated {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="Seeker App Logo" style="max-width: 200px; display: block; margin: 0 auto 20px;">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last Updated: July 21, 2026</p>
+        </header>
+
+        <p>Welcome to <strong>Seeker</strong>. Your privacy is incredibly important to us. Because Seeker is a location-based, real-time multiplayer game, we require certain permissions and data to make the game function. However, our core philosophy is <strong>ephemeral data</strong>: we do not want your data, we do not track you long-term, and we do not sell your personal information.</p>
+
+        <p>This Privacy Policy explains what information we collect during gameplay, how it is temporarily stored, and exactly how it is deleted.</p>
+
+        <h2>1. Information We Collect</h2>
+        <p>To participate in a game room, Seeker temporarily collects and processes the following data:</p>
+        <ul>
+            <li><strong>Display Name:</strong> When you join or create a lobby, you provide a display name. This name is used solely to identify you to other players in your specific game room.</li>
+            <li><strong>Device Location (GPS):</strong> For game modes like <em>Squeeze Play</em> and <em>Hack &amp; Seek</em>, we require precise location data to verify if you are inside the safe zone or to broadcast your location to the Seeker if you fail a hack. Location data is only actively tracked while a round is active.</li>
+            <li><strong>Bluetooth Signals:</strong> The app utilizes Bluetooth Low Energy (BLE) broadcasting and scanning to calculate local proximity (the "Hot &amp; Cold" radar effect). We do not collect personally identifiable Bluetooth data; we only read the signal strength (RSSI) of other devices actively playing the game with you.</li>
+            <li><strong>Camera and Photos:</strong> If your room plays the <em>Snap &amp; Seek</em> game mode, or when the Seeker "tags" a player, the app uses your camera to take a photo.</li>
+        </ul>
+
+        <h2>2. Snap &amp; Seek Photos & AI Processing</h2>
+        <p>During the <em>Snap &amp; Seek</em> game mode, players take photos of specific real-world objects. The Seeker also takes photos when tagging a player. Here is exactly how we handle these images:</p>
+        <ul>
+            <li><strong>AI Verification:</strong> Photos taken to verify scavenger hunt items are securely transmitted to the Google Cloud Vision API for AI object recognition. This determines if the item matches your objective.</li>
+            <li><strong>Mission Log:</strong> Validated photos and "Gotcha" tags are temporarily uploaded to our database to be displayed in a shared "Mission Log" slideshow at the end of the round.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <h3>3. How We Store and Delete Your Data</h3>
+            <p>Seeker is powered by Google Firebase (Cloud Firestore and Firebase Storage). We utilize a strict "Session-Based" data model. <strong>No gameplay data is kept permanently.</strong></p>
+            
+            <ul>
+                <li><strong>Manual Deletion:</strong> When the Host of a game presses "Delete Room (End Game)" or leaves the lobby, <strong>all data associated with that room is instantly and permanently deleted</strong> from our Firebase servers. This includes all player names, scores, GPS coordinates, and every photo taken during the session.</li>
+                <li><strong>Automated 30-Minute Purge:</strong> We understand that players sometimes close the app without properly ending the game. To protect your privacy, we employ automated database routines. If a game room shows no activity for <strong>30 minutes</strong>, an automated cloud function sweeps the database and permanently deletes the room, its players, and all associated photos.</li>
+            </ul>
+        </div>
+
+        <h2>4. Third-Party Services</h2>
+        <p>We use a limited number of trusted third-party services to operate the game:</p>
+        <ul>
+            <li><strong>Google Firebase:</strong> For real-time database syncing and temporary photo storage.</li>
+            <li><strong>Google Cloud Vision API:</strong> For AI object recognition during Snap &amp; Seek.</li>
+            <li><strong>RevenueCat:</strong> To manage premium tier subscriptions. (Note: Authentication is handled via anonymous Firebase IDs, meaning your purchase history is not tied to an email address or personal identity by us).</li>
+        </ul>
+
+        <h2>5. Children's Privacy</h2>
+        <p>Seeker is intended for general audiences. However, because we do not require account creation, emails, or real names, we do not knowingly collect personally identifiable information from children under 13. If you are a parent and believe your child has entered their real name into a game room, rest assured that the data will be automatically purged within 30 minutes of the game ending.</p>
+
+        <h2>6. Changes to This Policy</h2>
+        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by updating the "Last Updated" date at the top of this page. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+        <h2>7. Contact Us</h2>
+        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or how your data is handled, please contact us at:</p>
+        <p>
+            <strong>Email:</strong> [Insert Your Support Email Here]<br>
+            <strong>Website:</strong> [Insert Your Website URL Here]
+        </p>
+    </div>
+
+</body>
+</html>
